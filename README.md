@@ -25,7 +25,6 @@ make installation
 This are the API endpoints to try the code. (Also sent in json format to import directly in Postman.)
 
 - 127.0.0.1/health
-- 127.0.0.1/products
 
 ## Tests
 
