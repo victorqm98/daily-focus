@@ -1,0 +1,6 @@
+health_get:
+  path: /health
+  controller: DailyFocus\App\Controller\HealthCheckController
+  methods:  [GET]
+  defaults:
+    ignore_monitoring: true
