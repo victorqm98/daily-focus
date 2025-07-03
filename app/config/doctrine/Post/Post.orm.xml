@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    
+    <entity name="DailyFocus\Post\Domain\Post" table="posts" repository-class="DailyFocus\Post\Infrastructure\Persistence\DoctrinePostRepository">
+        <embedded name="id" class="DailyFocus\Shared\Domain\ValueObjects\Id" use-column-prefix="false" />
+        
+        <embedded name="authorId" class="DailyFocus\Shared\Domain\ValueObjects\Id" column-prefix="author_" />
+        
+        <field name="content" type="text" />
+        <field name="createdAt" type="datetime_immutable" column="created_at" />
+        <field name="archivedAt" type="datetime_immutable" column="archived_at" nullable="true" />
+        
+        <indexes>
+            <index name="author_created_idx" columns="author_value,created_at" />
+            <index name="archived_idx" columns="archived_at" />
+        </indexes>
+    </entity>
+</doctrine-mapping>

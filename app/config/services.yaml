@@ -22,34 +22,24 @@ services:
         exclude:
             - '../src/DependencyInjection/'
             - '../src/AppKernel.php'
-    DailyFocus\Tests\:
-      resource: '../../tests'
     DailyFocus\App\Controller\:
         resource: '../src/Controller'
         tags: ['controller.service_arguments']
 
-    DailyFocus\Product\Domain\ProductRepository:
-        class: DailyFocus\Product\Infrastructure\Product\MysqlProductRepository
+    # User Domain
+    DailyFocus\User\Domain\UserRepository:
+        class: DailyFocus\User\Infrastructure\Persistence\DoctrineUserRepository
         arguments:
             - '@doctrine.orm.entity_manager'
 
-    DailyFocus\Discount\Domain\DiscountRepository:
-        class: DailyFocus\Discount\Infrastructure\Discount\MysqlDiscountRepository
+    # Friendship Domain
+    DailyFocus\Friendship\Domain\FriendshipRepository:
+        class: DailyFocus\Friendship\Infrastructure\Persistence\DoctrineFriendshipRepository
         arguments:
             - '@doctrine.orm.entity_manager'
-    
-    DailyFocus\Discount\Infrastructure\DataFixtures\:
-        resource: '../../src/Discount/Infrastructure/DataFixtures'
-        tags: ['doctrine.fixture.orm']
 
-    DailyFocus\Price\Infrastructure\DataFixtures\:
-        resource: '../../src/Price/Infrastructure/DataFixtures'
-        tags: ['doctrine.fixture.orm']
-
-    DailyFocus\Product\Infrastructure\DataFixtures\:
-        resource: '../../src/Product/Infrastructure/DataFixtures'
-        tags: ['doctrine.fixture.orm']
-
-    DailyFocus\Category\Infrastructure\DataFixtures\:
-        resource: '../../src/Category/Infrastructure/DataFixtures'
-        tags: ['doctrine.fixture.orm']
+    # Post Domain
+    DailyFocus\Post\Domain\PostRepository:
+        class: DailyFocus\Post\Infrastructure\Persistence\DoctrinePostRepository
+        arguments:
+            - '@doctrine.orm.entity_manager'

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping"
+                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                  xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+    
+    <entity name="DailyFocus\User\Domain\User" table="users" repository-class="DailyFocus\User\Infrastructure\Persistence\DoctrineUserRepository">
+        <embedded name="id" class="DailyFocus\Shared\Domain\ValueObjects\Id" use-column-prefix="false" />
+        
+        <field name="username" type="string" length="50" unique="true" />
+        <embedded name="email" class="DailyFocus\Shared\Domain\ValueObjects\Email" column-prefix="email_" />
+        <field name="hashedPassword" type="string" length="255" column="hashed_password" />
+        <field name="createdAt" type="datetime_immutable" column="created_at" />
+        <field name="updatedAt" type="datetime_immutable" column="updated_at" />
+    </entity>
+</doctrine-mapping>

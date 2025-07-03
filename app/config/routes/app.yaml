@@ -4,3 +4,41 @@ health_get:
   methods:  [GET]
   defaults:
     ignore_monitoring: true
+
+# User routes
+user_register:
+  path: /api/users/register
+  controller: DailyFocus\App\Controller\User\RegisterUserController
+  methods: [POST]
+
+user_login:
+  path: /api/users/login
+  controller: DailyFocus\App\Controller\User\LoginUserController
+  methods: [POST]
+
+user_search:
+  path: /api/users/search
+  controller: DailyFocus\App\Controller\User\SearchUsersController
+  methods: [GET]
+
+# Friendship routes
+friendship_request:
+  path: /api/friendships/request
+  controller: DailyFocus\App\Controller\Friendship\SendFriendshipRequestController
+  methods: [POST]
+
+friendship_accept:
+  path: /api/friendships/accept
+  controller: DailyFocus\App\Controller\Friendship\AcceptFriendshipRequestController
+  methods: [POST]
+
+# Post routes
+post_create:
+  path: /api/posts
+  controller: DailyFocus\App\Controller\Post\CreatePostController
+  methods: [POST]
+
+post_friends:
+  path: /api/posts/friends
+  controller: DailyFocus\App\Controller\Post\GetFriendsPostsController
+  methods: [GET]

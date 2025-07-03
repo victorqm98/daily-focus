@@ -11,7 +11,30 @@ doctrine:
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
         auto_mapping: true
         mappings:
-            # TODO: Add your Doctrine ORM mappings here
+            DailyFocus\User:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/config/doctrine/User'
+                prefix: 'DailyFocus\User\Domain'
+                alias: User
+            DailyFocus\Shared:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/config/doctrine/Shared'
+                prefix: 'DailyFocus\Shared\Domain\ValueObjects'
+                alias: Shared
+            DailyFocus\Post:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/config/doctrine/Post'
+                prefix: 'DailyFocus\Post\Domain'
+                alias: Post
+            DailyFocus\Friendship:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/config/doctrine/Friendship'
+                prefix: 'DailyFocus\Friendship\Domain'
+                alias: Friendship
 when@test:
     doctrine:
         dbal:

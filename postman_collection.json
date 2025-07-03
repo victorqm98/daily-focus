@@ -1,0 +1,245 @@
+{
+	"info": {
+		"_postman_id": "focusdaily-api",
+		"name": "FocusDaily API",
+		"description": "Colección de endpoints para la API de FocusDaily",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "User Management",
+			"item": [
+				{
+					"name": "Register User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\": \"juan123\",\n    \"email\": \"juan@example.com\",\n    \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/users/register",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"register"
+							]
+						}
+					}
+				},
+				{
+					"name": "Login User",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"juan@example.com\",\n    \"password\": \"password123\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/users/login",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"login"
+							]
+						}
+					}
+				},
+				{
+					"name": "Search Users",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/users/search?username=juan",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"search"
+							],
+							"query": [
+								{
+									"key": "username",
+									"value": "juan"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Friendship Management",
+			"item": [
+				{
+					"name": "Send Friendship Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"requester_id\": \"{{user1_id}}\",\n    \"addressee_id\": \"{{user2_id}}\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/friendships/request",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"friendships",
+								"request"
+							]
+						}
+					}
+				},
+				{
+					"name": "Accept Friendship Request",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"friendship_id\": \"{{friendship_id}}\",\n    \"user_id\": \"{{user2_id}}\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/friendships/accept",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"friendships",
+								"accept"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Post Management",
+			"item": [
+				{
+					"name": "Create Post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"author_id\": \"{{user1_id}}\",\n    \"content\": \"Hoy tuve un día increíble. Logré completar todos mis objetivos y me siento muy motivado para mañana. Es genial poder compartir estas reflexiones con mis amigos más cercanos.\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}/api/posts",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"posts"
+							]
+						}
+					}
+				},
+				{
+					"name": "Get Friends Posts",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/posts/friends?user_id={{user1_id}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"posts",
+								"friends"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "{{user1_id}}"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Health Check",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/health",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"health"
+					]
+				}
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1",
+			"type": "string"
+		},
+		{
+			"key": "user1_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "user2_id",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "friendship_id",
+			"value": "",
+			"type": "string"
+		}
+	]
+}
